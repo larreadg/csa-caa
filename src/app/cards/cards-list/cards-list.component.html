@@ -1,0 +1,35 @@
+<section class="container">
+    <section class="controls fadeIn" *ngIf="listToPlay.length > 0">
+        <section class="emojis">
+            <p-avatar *ngFor="let itp of listToPlay" [image]="idx.openmojiUrl(itp.pictogramId, colorStyle)" [style.opacity]="opacity"></p-avatar>
+        </section>
+        <section class="flex gap-1 mx-2">
+            <button (click)="removeLastItem()" icon="pi pi-delete-left" pButton pRipple class="p-button-sm p-button-rounded p-button-text"></button>
+            <button (click)="play()" icon="pi pi-volume-up" pButton pRipple class="p-button-sm p-button-rounded"></button>
+        </section>
+    </section>
+    <section class="pictogramas">
+        <section class="grid">
+            <section class="col-4" *ngFor="let card of cards" (click)="addToList(card)" [longPressDuration]="700" (longPress)="deleteCard(card)">
+                <section class="flex align-items-center justify-content-center border-round-sm py-2 px-1 shadow-1 flex-column shadow-2" [style]="{ backgroundColor: 'var(--surface-card)', height: '100px' }">
+                    <p-avatar [image]="idx.openmojiUrl(card.pictogramId, colorStyle)" size="large" [style.opacity]="opacity"></p-avatar>
+                    <div class="marquee" [style.--dur]="marqueeDur(card.text)">
+                        <div class="marquee__track">
+                          <span class="marquee__text">{{ card.text }}</span>
+                          <span class="marquee__text" aria-hidden="true">{{ card.text }}</span>
+                        </div>
+                      </div>
+                </section>
+            </section>
+        </section>
+    </section>
+    
+</section>
+
+<p-dialog [header]="appName" [(visible)]="showDelete" [style]="{width: 'calc(100vw - 2rem)'}">
+    <p class="font-semibold">¿Eliminar pictograma?</p>
+    <ng-template pTemplate="footer">
+        <p-button (click)="showDelete = false" label="Cancelar" styleClass="p-button-text p-button-sm"></p-button>
+        <p-button (click)="confirmDeleteCard()" label="Sí, eliminar" styleClass="p-button-sm"></p-button>
+    </ng-template>
+</p-dialog>

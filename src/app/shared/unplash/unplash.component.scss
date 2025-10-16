@@ -1,0 +1,38 @@
+.splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--surface-card);
+    /* O el color que desees */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    /* Asegura que esté por encima de todo el contenido */
+}
+
+.splash-logo {
+    max-width: 200px;
+    /* Ajusta según el tamaño del logo */
+    animation: fadeIn 1s ease-in-out;
+}
+
+.asistrack {
+    font-family: 'Roboto';
+    font-size: 2rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Ejemplo de animación: */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

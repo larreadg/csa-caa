@@ -1,0 +1,6 @@
+.content {
+    height: calc(100dvh - 70px);
+    overflow-y: auto;
+    background-color: var(--surface-ground);
+    padding: 1rem;
+}

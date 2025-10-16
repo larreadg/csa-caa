@@ -1,0 +1,8 @@
+<app-unplash *ngIf="showSplash"></app-unplash>
+<ng-container *ngIf="!showSplash">
+    <app-nav-bar></app-nav-bar>
+    <section class="content">
+        <router-outlet></router-outlet>
+    </section>
+</ng-container>
+<p-toast  position="top-center" styleClass="ayvu-toast"></p-toast>

@@ -1,0 +1,25 @@
+<section class="grid">
+    <section class="col-12">
+        <p class="m-0 font-semibold text-primary">Pictogramas</p>
+        <p-divider></p-divider>
+    </section>
+    <section class="col-12">
+        <section class="flex justify-content-between align-items-center">
+            <p-avatar [image]="idx.openmojiUrl('1F600', colorStyle)" size="large" shape="circle"></p-avatar>
+            <p-toggleButton (ngModelChange)="updateColor($event)" [(ngModel)]="color" onLabel="Color" offLabel="B/N"></p-toggleButton>
+        </section>
+    </section>
+    <section class="col-12">
+        <p class="m-0 font-semibold text-primary">Opacidad</p>
+        <p-divider></p-divider>
+    </section>
+    <section class="col-12">
+        <section class="flex justify-content-center mb-4">
+            <p-avatar [image]="idx.openmojiUrl('1F600', colorStyle)" size="large" shape="circle" [style.opacity]="opacity"></p-avatar>
+        </section>
+        <p-slider [(ngModel)]="opacity" [min]="0" [max]="1" [step]="0.01"></p-slider>
+    </section>
+    <section class="col-12">
+        <button (click)="save()" icon="pi pi-check" pButton pRipple class="w-full mt-4" label="Guardar cambios"></button>
+    </section>
+</section>

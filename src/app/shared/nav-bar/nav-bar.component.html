@@ -1,0 +1,27 @@
+<nav>
+    <section class="flex align-items-center justify-content-center gap-2">
+        <img src="assets/images/yv2.png" width="48" height="48">
+        <p class="m-0 font-semibold text-primary">{{appName}}</p>
+    </section>
+    <section>
+        <button (click)="showSidebar = true" icon="pi pi-bars" pButton pRipple class="p-button-sm p-button-rounded p-button-text"></button>
+    </section>
+</nav>
+
+<p-sidebar [(visible)]="showSidebar" position="bottom" [style]="{ height: '50vh' }">
+    <p class="font-semibold text-xl text-primary">Menú</p>
+    <section class="flex flex-column gap-1">
+        <section class="flex align-items-center gap-2 p-2 border-round-xs" [style]="{ backgroundColor: 'var(--surface-ground)', borderLeft: '3px solid var(--primary-color)' }" routerLink="/cards" (click)="showSidebar = false">
+            <p-avatar icon="pi pi-home"></p-avatar>
+            <p class="m-0 font-semibold text-sm">Inicio</p>
+        </section>
+        <section class="flex align-items-center gap-2 p-2 border-round-xs" [style]="{ backgroundColor: 'var(--surface-ground)', borderLeft: '3px solid var(--surface-border)' }" routerLink="/cards/add" (click)="showSidebar = false">
+            <p-avatar icon="pi pi-plus"></p-avatar>
+            <p class="m-0 font-semibold text-sm">Nuevo</p>
+        </section>
+        <section class="flex align-items-center gap-2 p-2 border-round-xs" [style]="{ backgroundColor: 'var(--surface-ground)', borderLeft: '3px solid var(--surface-border)' }" routerLink="/cards/settings" (click)="showSidebar = false">
+            <p-avatar icon="pi pi-cog"></p-avatar>
+            <p class="m-0 font-semibold text-sm">Configuraciones</p>
+        </section>
+    </section>
+</p-sidebar>

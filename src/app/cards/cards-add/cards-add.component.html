@@ -1,0 +1,38 @@
+<!-- add-card.component.html -->
+<section class="grid">
+    <section class="col-12">
+        <p class="text-sm text-primary font-semibold">Ingrese una frase</p>
+        <textarea class="no-resize w-full" rows="5" cols="30" pInputTextarea [(ngModel)]="text"></textarea>
+    </section>
+    <section class="col-12">
+        <p class="text-sm text-primary font-semibold">Seleccione un pictograma</p>
+        <span class="p-input-icon-left w-full">
+            <i class="pi pi-search"></i>
+            <input class="w-full" type="text" pInputText [(ngModel)]="q" (input)="doSearch()" placeholder="Buscar: sonrisa, casa, lluvia..."/>
+        </span>
+    </section>
+    <ng-container *ngIf="emoji !== null">
+        <section class="col-12">
+            <section class="flex align-items-center justify-content-between border-round-sm p-2 shadow-1 border-2 border-primary" [style]="{ backgroundColor: 'var(--surface-card)', height: '70px' }">
+                <p-avatar [image]="idx.openmojiUrl(emoji.hexcode)" size="large"></p-avatar>
+                <button (click)="removeEmoji()" icon="pi pi-trash" pButton pRipple class="p-button-sm p-button-rounded p-button-text"></button>
+            </section>
+        </section>
+    </ng-container>
+    <section class="col-4" *ngFor="let it of results" (click)="setEmoji(it)">
+        <section class="flex align-items-center justify-content-center border-round-sm py-2 shadow-1" [style]="{ backgroundColor: 'var(--surface-card)', height: '70px' }">
+            <p-avatar [image]="idx.openmojiUrl(it.hexcode)" size="large"></p-avatar>
+        </section>
+    </section>
+    <ng-container *ngIf="results.length === 0 && emoji === null">
+        <section class="col-12">
+            <section class="flex align-items-center justify-content-center flex-column">
+                <img src="assets/openmoji/color/svg/1F50D.svg" alt="Buscar" height="64" width="64">
+                <p class="m-0 font-semibold text-sm">Ingresa una palabra para buscar...</p>
+            </section>
+        </section>
+    </ng-container>
+    <section class="col-12">
+        <button [loading]="loading" (click)="pick()" [disabled]="text === '' || emoji === null" icon="pi pi-star" pButton pRipple label="Guardar" class="p-button-sm w-full my-2"></button>
+    </section>
+</section>
