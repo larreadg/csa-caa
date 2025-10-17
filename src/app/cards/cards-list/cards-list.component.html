@@ -1,16 +1,20 @@
 <section class="container">
     <section class="controls fadeIn" *ngIf="listToPlay.length > 0">
         <section class="emojis">
-            <p-avatar *ngFor="let itp of listToPlay" [image]="idx.openmojiUrl(itp.pictogramId, colorStyle)" [style.opacity]="opacity"></p-avatar>
+            <p-avatar size="xlarge" *ngFor="let itp of listToPlay" [image]="idx.openmojiUrl(itp.pictogramId, colorStyle)" [style.opacity]="opacity"></p-avatar>
         </section>
-        <section class="flex gap-1 mx-2">
-            <button (click)="removeLastItem()" icon="pi pi-delete-left" pButton pRipple class="p-button-sm p-button-rounded p-button-text"></button>
-            <button (click)="play()" icon="pi pi-volume-up" pButton pRipple class="p-button-sm p-button-rounded"></button>
+        <section class="flex gap-2 mx-2">
+            <section>
+                <button (click)="removeLastItem()" icon="pi pi-delete-left" pButton pRipple class="p-button-sm p-button-rounded p-button-text p-button-lg"></button>
+            </section>
+            <section>
+                <button (click)="play()" icon="pi pi-volume-up" pButton pRipple class="p-button-sm p-button-rounded p-button-lg"></button>
+            </section>
         </section>
     </section>
     <section class="pictogramas">
         <section class="grid">
-            <section class="col-4" *ngFor="let card of cards" (click)="addToList(card)" [longPressDuration]="700" (longPress)="deleteCard(card)">
+            <section class="col-4" *ngFor="let card of cards" (singleTap)="addToList(card)" [longPressDuration]="700" (longPress)="deleteCard(card)" doubleTap (doubleTap)="speak(card.text)">
                 <section class="flex align-items-center justify-content-center border-round-sm py-2 px-1 shadow-1 flex-column shadow-2" [style]="{ backgroundColor: 'var(--surface-card)', height: '100px' }">
                     <p-avatar [image]="idx.openmojiUrl(card.pictogramId, colorStyle)" size="large" [style.opacity]="opacity"></p-avatar>
                     <div class="marquee" [style.--dur]="marqueeDur(card.text)">

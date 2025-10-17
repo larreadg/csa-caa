@@ -25,6 +25,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { DividerModule } from 'primeng/divider';
 import { SliderModule } from 'primeng/slider';
+import { DoubleTapDirective } from './directives/double-tap.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SliderModule } from 'primeng/slider';
     CardsListComponent,
     LongPressDirective,
     UnplashComponent,
-    CardsSettingsComponent 
+    CardsSettingsComponent,
+    DoubleTapDirective 
   ],
   imports: [
     BrowserModule,
